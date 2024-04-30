@@ -1,0 +1,13 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+#mainPage {
+  border: "red solid 2px";
+  textAlign:"left";
+  padding:"1rem";
+  marginBottom: "1rem";
+}
