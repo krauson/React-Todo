@@ -12,7 +12,7 @@ const MainPage = () => {
       const { data } = await getAllUsers(userUrl);
       setUsers(data)
     };
-    fetchUsers()
+    fetchUsers();
   }, []);
 
   return (
