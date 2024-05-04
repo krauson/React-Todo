@@ -1,7 +1,15 @@
 import axios from "axios";
 
-const getAllUsers = (url) => {
-  return axios.get(url)
+const usersUrl = "https://jsonplaceholder.typicode.com/users";
+
+const getAllUsers = () => {
+  return axios.get(usersUrl)
 }
 
-export { getAllUsers }
+const updateUser = async(user, id) => {
+  const {data} = await axios.patch(`${usersUrl}/${id}`, user)
+  console.log(data)
+  return data
+}
+
+export { getAllUsers, updateUser }

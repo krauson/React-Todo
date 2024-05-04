@@ -1,14 +1,28 @@
-import React from 'react'
-import '../cssFiles/App.css'
+import React, { useState } from 'react'
+import OtherDataComp from './OtherDataComp'
+import "../cssFiles/userComp.css"
+import { updateUser } from '../utils'
 
 const UserComp = (props) => {
+  const [isShow, setIsShow] = useState(false);
+
+  let user = props.user
+
+  const patchUser = async() => {
+    user = await updateUser(user, user.id)
+    console.log({user})
+  }
+
   return (
-    // <div className="mainPage">
-    <div className="mainPage" style={{ border: "red solid 2px", textAlign:"left", padding:"1rem", marginBottom: "1rem"}}>
+    <div className="userComp">
       ID: {props.user.id} <br/>
-      Name  : <input type="text" placeholder={props.user.name}/> <br/>
-      Email : <input type="text" placeholder={props.user.email}/> <br/>
-      <button style={{ backgroundColor:'grey', fontSize:"10px", }}>Other Data</button>
+      Name  : <input placeholder={user.name} /> <br/>
+      Email : <input placeholder={user.email} /> <br/>
+      <button className="otherData" onMouseOver={() => setIsShow(true)}
+      onClick={() => setIsShow(!isShow)}>Other Data</button>
+      <button onClick={patchUser}>Update</button>      
+      <button>Delete</button>    
+      {isShow && <OtherDataComp user={user} />}
     </div>
   )
 }
