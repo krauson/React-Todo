@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import OtherDataComp from './OtherDataComp'
 import "../cssFiles/userComp.css"
 
@@ -7,8 +7,9 @@ const UserComp = (props) => {
   const [newName, setNewName] = useState('')
   const [newEmail, setNewEmail] = useState('');
 
-  let user = props.user
+  const user = props.user
   const updateUserData = props.updateUserData
+  const deleteUser = props.deleteUser
 
   // Function to handle update button click
   const handleUpdateClick = () => {
@@ -27,6 +28,15 @@ const UserComp = (props) => {
     updateUserData(user.id, newData);
   };
 
+
+  const handleDeleteClick = () => {
+    deleteUser(user.id)
+  }
+
+  useEffect(() => {
+    console.log('useEffect render')
+  },[user])
+
   return (
     <div className="userComp">
       ID: {props.user.id} <br/>
@@ -35,7 +45,7 @@ const UserComp = (props) => {
       <button className="otherData" onMouseOver={() => setIsShow(true)}
       onClick={() => setIsShow(!isShow)}>Other Data</button>
       <button onClick={handleUpdateClick}>Update</button>      
-      <button>Delete</button>    
+      <button onClick={handleDeleteClick}>Delete</button>    
       {isShow && <OtherDataComp user={user} />}
     </div>
   )

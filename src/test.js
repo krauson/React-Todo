@@ -1,11 +1,15 @@
 const arr = ['aaa', 'b', 'hagai']
 
-const filtered = arr.filter(item => {
-  return (
-    item => item.includes('b')
-  )
-} )
+arr.splice(2)
 
-// filtered.map()
+console.log(arr)
 
-console.log(filtered)
+// const filtered = arr.filter(item => {
+//   return (
+//     item => item.includes('b')
+//   )
+// } )
+
+// // filtered.map()
+
+// console.log(filtered)

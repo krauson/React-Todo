@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getAllUsers } from "../utils";
 import UserComp from "./UserComp";
-import "../cssFiles/userComp.css"
+import "../cssFiles/userComp.css";
 
 const MainPage = () => {
   let [users, setUsers] = useState([]);
@@ -10,39 +10,26 @@ const MainPage = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       const { data } = await getAllUsers();
-      setUsers(data)
-      setFilteredUsers(data)
+      setUsers(data);
+      setFilteredUsers(data);
     };
     fetchUsers();
   }, []);
 
   const handleInputChange = (event) => {
-    const searchVal = event.target.value
-    const tempFilteredUsers = users.filter(user => 
-      user.name.includes(searchVal) ||
-     user.email.includes(searchVal))
-    setFilteredUsers(tempFilteredUsers)
-  }
-
-  // const handleInputChange = (event) => {
-  //   const searchVal = event.target.value
-  //   const tempFilteredUsers = users.filter(user => 
-  //     user.name.toLowerCase().includes(searchVal) ||
-  //    user.email.toLowerCase().includes(searchVal))
-  //   setFilteredUsers(tempFilteredUsers)
-  // }
-
-  // const updateUser = (user) => {
-  //   console.log({user})
-  //   const chosenUser = users.filter(user => user.id === user.id)
-  //   // chosenUser = {...chosenUser, name, email}
-  //   users = [...users, chosenUser]
-  // }
+    const searchVal = event.target.value;
+    const tempFilteredUsers = users.filter(
+      (user) =>
+        user.name.toLowerCase().includes(searchVal.toLowerCase()) ||
+        user.email.toLowerCase().includes(searchVal.toLowerCase())
+    );
+    setFilteredUsers(tempFilteredUsers);
+  };
 
   // Update user's data function
   const updateUserData = (id, newData) => {
     // Find the user by id and update its data
-    const updatedUsers = users.map(user => {
+    const updatedUsers = users.map((user) => {
       if (user.id === id) {
         return { ...user, ...newData };
       }
@@ -52,17 +39,47 @@ const MainPage = () => {
     setUsers(updatedUsers);
   };
 
+  const deleteUser = (id) => {
+    let index = 0;
+    users.map((user) => {
+      if (id === user.id) {
+        users.splice(index, index);
+        setUsers(users)
+        alert(`The user ${user.name} was deleted..`)
+      }
+      index++;
+    });
+  };
+
   return (
     <div>
-      Search <input onChange={handleInputChange} type="text" style={{ marginRight: "20px" }} />
-      <button style={{ backgroundColor: "yellowgreen", fontSize:"12px", marginBottom: "1rem"}}>Add</button> <br/>
-      {
-        filteredUsers !== undefined && filteredUsers.map((user) => {
+      Search{" "}
+      <input
+        onChange={handleInputChange}
+        type="text"
+        style={{ marginRight: "20px" }}
+      />
+      <button
+        style={{
+          backgroundColor: "yellowgreen",
+          fontSize: "12px",
+          marginBottom: "1rem",
+        }}
+      >
+        Add
+      </button>{" "}
+      <br />
+      {filteredUsers !== undefined &&
+        filteredUsers.map((user) => {
           return (
-            <UserComp user={user} key={user.id} updateUserData={updateUserData}/>
-          )
-        })
-      }
+            <UserComp
+              user={user}
+              key={user.id}
+              updateUserData={updateUserData}
+              deleteUser={deleteUser}
+            />
+          );
+        })}
     </div>
   );
 };
