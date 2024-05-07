@@ -4,7 +4,7 @@ import UserComp from "./UserComp";
 import "../cssFiles/userComp.css"
 
 const MainPage = () => {
-  const [users, setUsers] = useState([]);
+  let [users, setUsers] = useState([]);
   const [filteredUsers, setFilteredUsers] = useState();
 
   useEffect(() => {
@@ -19,15 +19,38 @@ const MainPage = () => {
   const handleInputChange = (event) => {
     const searchVal = event.target.value
     const tempFilteredUsers = users.filter(user => 
-      user.name.toLowerCase().includes(searchVal) ||
-     user.email.toLowerCase().includes(searchVal))
+      user.name.includes(searchVal) ||
+     user.email.includes(searchVal))
     setFilteredUsers(tempFilteredUsers)
   }
 
-  const updateUser = (id) => {
-    const chosenUser = users.filter(user => user.id === id)
-    users = [...users, user]
-  }
+  // const handleInputChange = (event) => {
+  //   const searchVal = event.target.value
+  //   const tempFilteredUsers = users.filter(user => 
+  //     user.name.toLowerCase().includes(searchVal) ||
+  //    user.email.toLowerCase().includes(searchVal))
+  //   setFilteredUsers(tempFilteredUsers)
+  // }
+
+  // const updateUser = (user) => {
+  //   console.log({user})
+  //   const chosenUser = users.filter(user => user.id === user.id)
+  //   // chosenUser = {...chosenUser, name, email}
+  //   users = [...users, chosenUser]
+  // }
+
+  // Update user's data function
+  const updateUserData = (id, newData) => {
+    // Find the user by id and update its data
+    const updatedUsers = users.map(user => {
+      if (user.id === id) {
+        return { ...user, ...newData };
+      }
+      return user;
+    });
+    // Set the updated users array to the state
+    setUsers(updatedUsers);
+  };
 
   return (
     <div>
@@ -36,7 +59,7 @@ const MainPage = () => {
       {
         filteredUsers !== undefined && filteredUsers.map((user) => {
           return (
-            <UserComp user={user} key={user.id} />
+            <UserComp user={user} key={user.id} updateUserData={updateUserData}/>
           )
         })
       }
