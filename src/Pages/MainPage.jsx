@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getAllUsers } from "../utils";
 import UserComp from "./UserComp";
-import "../cssFiles/userComp.css";
+import "../cssFiles/styles.css";
 
 const MainPage = () => {
   let [users, setUsers] = useState([]);
