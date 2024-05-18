@@ -52,7 +52,7 @@ const MainPage = () => {
   };
 
   return (
-    <div>
+    <div className="mainPAge">
       Search{" "}
       <input
         onChange={handleInputChange}

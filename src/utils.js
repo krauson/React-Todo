@@ -9,7 +9,7 @@ const getAllUsers = () => {
 };
 
 const getUsertodos = (id) => {
-  return axios.get(`todosUrl?userId=${id}`);
+  return axios.get(`${todosUrl}?userId=${id}`);
 };
 
 

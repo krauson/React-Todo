@@ -1,23 +1,28 @@
 import React, { useEffect, useState } from 'react'
 import { getUsertodos } from '../utils';
 import '../cssFiles/styles.css'
+import TodoComp from './TodoComp';
+
 
 const TodosPage = (props) => {
-  const [userTodos, setUserTodos] = useState([])
+  const [userTodos, setUserTodos] = useState()
 
   const id = props.userId
 
   useEffect(() => {
-    const fetchData = async(id) => {
+    const fetchData = async() => {
       const {data} = await getUsertodos(id)
+      // console.log(data)
       setUserTodos(data)
     }
     fetchData()
   }, []);
 
   return (
-    <div className='todosComp'>
-      <h3>Todos - User {id}</h3>    <button>Add</button>
+    <div className='todosContainer'>
+      <span style={{ textAlign: "center"}}>Todos - User {id}</span>   <button >Add</button>
+
+      <TodoComp userTodos={userTodos}/>
     </div>
   )
 }

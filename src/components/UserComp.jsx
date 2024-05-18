@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import OtherDataComp from './OtherDataComp'
 import "../cssFiles/styles.css"
-import TodosPage from './TodosPage';
+import TodosPage from './todosContainer';
 
 const UserComp = (props) => {
   const [isOtherDataShown, setIsOtherDataShown] = useState(false);
@@ -59,7 +59,10 @@ const UserComp = (props) => {
 
       {isOtherDataShown && <OtherDataComp user={user} />}
 
-      <TodosPage userId={user.id}/>
+      <div>
+        
+        {isIdclicked && <TodosPage userId={user.id}/>}
+      </div>
     </div>
   )
 }

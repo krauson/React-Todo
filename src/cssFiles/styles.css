@@ -1,10 +1,15 @@
+.mainPage{
+  border-radius: 20px;
+}
+
 .userComp {
   font-size: 2rem;
-  border: red solid 2px;
+  border: red solid 0.2rem;
   text-align: left;
   padding: 1rem;
-  margin-bottom: 1rem;
-  background-color: orange;  
+  margin-bottom: 10rem;
+  position: relative;
+  border-radius: 20px;
 }
 
 input{
@@ -23,9 +28,26 @@ div>button{
   margin: 2px;
 }
 
-.todosComp{
+.todosContainer{
   position: absolute;
-  right: 20rem;
-  transform: translate(-30%, -150%)
+  top: 0;
+  left: 34rem;
+  width: 500px;
+  border: 2px solid black;
+  padding: 0.5rem;
+  background-color: aliceblue;
+  font-size: large;
+}
 
+.todo{
+  border: 2px solid black;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border-radius: 20px;
+} 
+
+div>span{
+  font-size: larger;
+  font-weight: bold;
+  text-decoration: underline;
 }
