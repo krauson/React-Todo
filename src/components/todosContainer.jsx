@@ -20,7 +20,11 @@ const TodosPage = (props) => {
 
   return (
     <div className='todosContainer'>
-      <span style={{ textAlign: "center"}}>Todos - User {id}</span>   <button >Add</button>
+      <div className='todosUserTitle'>Todos - User {id}</div>
+      <div style={{ textAlign: "right"}}>
+        <button >Add</button>
+      </div>
+     
 
       <TodoComp userTodos={userTodos}/>
     </div>

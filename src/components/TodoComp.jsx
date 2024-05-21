@@ -10,8 +10,17 @@ const TodoComp = (props) => {
         props.userTodos && props.userTodos.slice(0, 3).map(todo => {
           return(
             <div className='todo' key={todo.id}> 
-                <strong>Title:</strong>  &nbsp; {todo.title.slice(0, 60)} <br/>
-               <strong> Completed:</strong> {todo.completed.toString()}
+               <div>
+                  <strong>Title:</strong>  &nbsp; {todo.title.slice(0, 60)} <br/>
+                 <strong> Completed:</strong>
+                {todo.completed.toString()} 
+               </div>
+
+                <div style={{ textAlign: 'right' }}>
+                  {
+                   todo.completed ? (null) : (<button className='markCompleted'>Mark Completed</button>) 
+                  }
+                </div>
             </div>
           )
         })

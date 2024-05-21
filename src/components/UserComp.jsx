@@ -52,7 +52,7 @@ const UserComp = (props) => {
       <div onClick={handleClickId}>ID: {props.user.id} <br/> </div>
       Name  : <input placeholder={user.name} onChange={e => setNewName(e.target.value)}/> <br/>
       Email : <input placeholder={user.email} onChange={e => setNewEmail(e.target.value)} /> <br/>
-      <button className="otherData" onMouseOver={() => setIsOtherDataShown(true)}
+      <button className="otherDataBtn" onMouseOver={() => setIsOtherDataShown(true)}
       onClick={() => setIsOtherDataShown(!isOtherDataShown)}>Other Data</button>
       <button onClick={handleUpdateClick}>Update</button>      
       <button onClick={handleDeleteClick}>Delete</button>

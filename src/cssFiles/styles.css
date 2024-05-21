@@ -16,11 +16,13 @@ input{
   font-size: 1.5rem;
 }
 
-.otherData {
+.otherDataBtn {
   background-color: rgb(93, 172, 209);
   font-size: 20px;
   margin-right: 40px;
 }
+
+
 
 div>button{
   background-color: rgb(218, 208, 68);
@@ -33,21 +35,31 @@ div>button{
   top: 0;
   left: 34rem;
   width: 500px;
-  border: 2px solid black;
+  border: 2px solid rgb(38, 102, 241);
   padding: 0.5rem;
   background-color: aliceblue;
   font-size: large;
+  
+  /* text-align: center; */
 }
 
 .todo{
-  border: 2px solid black;
+  border: 2px solid rgb(192, 36, 231);
   padding: 0.5rem;
   margin: 0.5rem;
   border-radius: 20px;
+  text-align: left;
 } 
 
-div>span{
+div.todosUserTitle{
   font-size: larger;
   font-weight: bold;
   text-decoration: underline;
+  text-align: center;
+}
+
+button.markCompleted{
+  background-color:rgb(163, 241, 38);
+  color: blueviolet;
+  height: 50px;
 }
